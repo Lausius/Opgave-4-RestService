@@ -9,29 +9,40 @@ using Opgave1_Model_Klasse;
 
 namespace FanoutputRestService.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class FanOutputController : ControllerBase
     {
+        public List<FanOutput> fanOutputReadings = new List<FanOutput>()
+        {
+            new FanOutput(1, "First Output", 15, 30),
+            new FanOutput(2, "Second Output", 18, 41),
+            new FanOutput(3, "Third Output", 24, 69),
+            new FanOutput(4, "Fourth Output", 22, 49),
+            new FanOutput(5, "Fifth Output", 20, 75),
+            new FanOutput(6, "Sixth Output", 16, 50),
+        };
+
         // GET: api/<FanOutputController>
         [HttpGet]
         public IEnumerable<FanOutput> Get()
         {
-            return FanOutput.fanOutputReadings;
+            return fanOutputReadings;
         }
 
         // GET api/<FanOutputController>/5
         [HttpGet("{id}")]
         public FanOutput Get(int id)
         {
-            return FanOutput.fanOutputReadings.Find(i => i.Id == id);
+            return fanOutputReadings.Find(i => i.Id == id);
         }
 
         // POST api/<FanOutputController>
         [HttpPost]
         public void Post([FromBody] FanOutput value)
         {
-            FanOutput.fanOutputReadings.Add(value);
+            fanOutputReadings.Add(value);
         }
 
         // PUT api/<FanOutputController>/5
@@ -53,7 +64,7 @@ namespace FanoutputRestService.Controllers
         public void Delete(int id)
         {
             FanOutput fanOutput = Get(id);
-            FanOutput.fanOutputReadings.Remove(fanOutput);
+            fanOutputReadings.Remove(fanOutput);
         }
     }
 }

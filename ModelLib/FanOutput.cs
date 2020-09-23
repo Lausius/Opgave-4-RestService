@@ -7,16 +7,6 @@ namespace Opgave1_Model_Klasse
 {
     public class FanOutput
     {
-        public static List<FanOutput> fanOutputReadings = new List<FanOutput>()
-        {
-            new FanOutput(1, "First Output", 15, 30),
-            new FanOutput(2, "Second Output", 18, 41),
-            new FanOutput(3, "Third Output", 24, 69),
-            new FanOutput(4, "Fourth Output", 22, 49),
-            new FanOutput(5, "Sixth Output", 20, 75),
-            new FanOutput(6, "Seventh Output", 16, 50),
-        };
-
         public FanOutput()
         {
 
