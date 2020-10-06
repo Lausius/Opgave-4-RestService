@@ -7,23 +7,26 @@ namespace Opgave1_Model_Klasse
 {
     public class FanOutput
     {
-        public FanOutput()
-        {
-
-        }
-
-        public FanOutput(int id, string name, double temperature, double humidity)
-        {
-            Id = id;
-            Name = name;
-            Temperature = temperature;
-            Humidity = humidity;
-        }
 
         private int _id;
         private string _name;
         private double _temperature;
         private double _humidity;
+        public static int _counter = 1;
+
+        public FanOutput()
+        {
+
+        }
+
+        public FanOutput(string name, double temperature, double humidity)
+        {
+            Id = _counter++;
+            Name = name;
+            Temperature = temperature;
+            Humidity = humidity;
+        }
+
 
         public int Id
         {

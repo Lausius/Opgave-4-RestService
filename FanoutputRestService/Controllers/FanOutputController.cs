@@ -14,14 +14,14 @@ namespace FanoutputRestService.Controllers
     [ApiController]
     public class FanOutputController : ControllerBase
     {
-        public List<FanOutput> fanOutputReadings = new List<FanOutput>()
+        public static List<FanOutput> fanOutputReadings = new List<FanOutput>()
         {
-            new FanOutput(1, "First Output", 15, 30),
-            new FanOutput(2, "Second Output", 18, 41),
-            new FanOutput(3, "Third Output", 24, 69),
-            new FanOutput(4, "Fourth Output", 22, 49),
-            new FanOutput(5, "Fifth Output", 20, 75),
-            new FanOutput(6, "Sixth Output", 16, 50),
+            new FanOutput("First Output", 15, 30),
+            new FanOutput("Second Output", 18, 41),
+            new FanOutput("Third Output", 24, 69),
+            new FanOutput("Fourth Output", 22, 49),
+            new FanOutput("Fifth Output", 20, 75),
+            new FanOutput("Sixth Output", 16, 50),
         };
 
         // GET: api/<FanOutputController>
@@ -42,6 +42,7 @@ namespace FanoutputRestService.Controllers
         [HttpPost]
         public void Post([FromBody] FanOutput value)
         {
+            value.Id = FanOutput._counter;
             fanOutputReadings.Add(value);
         }
 
@@ -52,7 +53,6 @@ namespace FanoutputRestService.Controllers
             FanOutput fanOutput = Get(id);
             if (fanOutput != null)
             {
-                fanOutput.Id = value.Id;
                 fanOutput.Name = value.Name;
                 fanOutput.Temperature = value.Temperature;
                 fanOutput.Humidity = value.Humidity;
